@@ -8,4 +8,6 @@ RUN npm install
 
 ADD ./src/index.js ./
 
+EXPOSE 3333
+
 CMD [ "node", "index.js"]
