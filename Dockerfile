@@ -8,9 +8,13 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
+COPY prisma ./prisma
+
 RUN npm ci --omit=dev
 
 COPY . .
+
+RUN npx prisma generate
 
 EXPOSE $PORT
 
