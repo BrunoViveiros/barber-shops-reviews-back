@@ -1,13 +1,17 @@
 FROM node:18.13.0-alpine
 
-WORKDIR /app
+ENV NODE_ENV=production
 
-ADD package*.json ./
+ENV PORT=3000
 
-RUN npm install
+WORKDIR /usr/src/app
 
-ADD ./src/index.js ./
+COPY package*.json ./
 
-EXPOSE 3333
+RUN npm ci --omit=dev
 
-CMD [ "node", "index.js"]
+COPY . .
+
+EXPOSE $PORT
+
+CMD [ "node", "src/index.js" ]
