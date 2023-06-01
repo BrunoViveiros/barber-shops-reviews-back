@@ -1,13 +1,8 @@
 const express = require("express");
+const routes = require("./routes");
 
 const app = express();
 
-app.get("/", (_, res) => {
-  res.send("ok");
-});
+app.use("/api/v1", routes);
 
-const port = process.env.PORT;
-
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
-});
+module.exports = app;
